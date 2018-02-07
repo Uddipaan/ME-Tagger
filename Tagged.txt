@@ -1,0 +1,1 @@
+[('My', u'NP'), ('name', u'NN'), ('is', u'BEZ'), ('uddipaan', u'NN'), ('.', u'.')]
