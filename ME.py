@@ -4,7 +4,7 @@ import nltk
 import pprint
 
 #The corpora is assigned to "tagged_sentence".
-tagged_sentences = nltk.corpus.brown.tagged_sents()
+tagged_sentences = nltk.corpus.treebank.tagged_sents()
 
 #Displays the sentences under consideration.
 #This will be used to train the ME tagger.
@@ -23,8 +23,20 @@ def features(sentence, index):
 		'first_word': index == 0,
 		'last_word': index == len(sentence) - 1,
 		'prev-word': '' if index == 0 else sentence[index-1],
-		'next-word': '' if index == len(sentence) - 1 else sentence[index + 1]
-}
+		'next-word': '' if index == len(sentence) - 1 else sentence[index + 1],
+		'has_hyphen': '-' in sentence[index],
+		'is_numeric': sentence[index].isdigit(),
+		'capital_inside': sentence[index][1:].lower() != sentence[index][1:],
+		'is_capitalized': sentence[index][0].upper() == sentence[index][0],
+		'is_all_caps': sentence[index].upper() == sentence[index],
+		'is_all_lower': sentence[index].lower() == sentence[index],
+		'prefix-1': sentence[index][0],
+		'prefix-2': sentence[index][:2],
+		'prefix-3': sentence[index][:3],
+		'suffix-1': sentence[index][-1],
+		'suffix-2': sentence[index][-2:],
+		'suffix-3': sentence[index][-3:]
+		}
 ##pprint.pprint(features(untag(tagged_sentences[0]),0))
 
 #split the training corpus into training sentences and testing sentences

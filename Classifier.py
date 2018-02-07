@@ -1,6 +1,7 @@
 __author__ = 'uddipaan'
 
-from sklearn.tree import DecisionTreeClassifier
+#from sklearn.tree import DecisionTreeClassifier
+from sklearn.svm import SVC
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.pipeline import Pipeline
 from ME import *
@@ -9,15 +10,15 @@ from sklearn.externals import joblib
 #Pipeline class is a useful toll for encapsulating multiple different transforms alongside an estimator into one obj.
 clsf = Pipeline([
 	('vectorizer', DictVectorizer(sparse=False)),
-	('classifier', DecisionTreeClassifier(criterion='entropy'))
+	#('classifier', DecisionTreeClassifier(criterion='entropy'))
+	('classifier', SVC())
 ])
 #We call our estimator instance clf, as it is a classifier. It now must be fitted to the model, i.e., it must learn from the model which is done by passing the training set to the fit method.
-clsf.fit(x[:1000], y[:1000])
+clsf.fit(x[:10000], y[:10000])
 
-print "Training complete!"
+print "Training complete and the model is saved."
 
-x_test, y_test = transform_to_dataset(test)
-
+x_test, y_test = transform_to_dataset(test)          
 print "Accuracy: ", clsf.score(x_test, y_test)
 
 #Saving the model so that i dont have to train it every time i run the program.
