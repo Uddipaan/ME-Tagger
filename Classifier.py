@@ -1,3 +1,5 @@
+__author__ = 'uddipaan'
+
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.pipeline import Pipeline
