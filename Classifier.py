@@ -1,17 +1,17 @@
 __author__ = 'uddipaan'
 
-#from sklearn.tree import DecisionTreeClassifier
-from sklearn.svm import SVC
+#from sklearn.tree import DecisionTreeClassifier #(89%)
+from sklearn import linear_model #SGD(91%)
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.pipeline import Pipeline
 from ME import *
 from sklearn.externals import joblib
 
-#Pipeline class is a useful toll for encapsulating multiple different transforms alongside an estimator into one obj.
+#Pipeline class is a useful to0l for encapsulating multiple different transforms alongside an estimator into one obj.
 clsf = Pipeline([
 	('vectorizer', DictVectorizer(sparse=False)),
 	#('classifier', DecisionTreeClassifier(criterion='entropy'))
-	('classifier', SVC())
+	('classifier', linear_model.SGDClassifier())
 ])
 #We call our estimator instance clf, as it is a classifier. It now must be fitted to the model, i.e., it must learn from the model which is done by passing the training set to the fit method.
 clsf.fit(x[:10000], y[:10000])
