@@ -2,7 +2,8 @@ __author__ = 'uddipaan'
 
 import nltk
 import argparse
-from sklearn.externals import joblib
+#from sklearn.externals import joblib
+import pickle
 from ME import features
 
 if __name__ == '__Tagger__':
@@ -20,7 +21,8 @@ mod_name = args.mod_name
 txt_file = args.txt_file
 
 
-clsf = joblib.load(mod_name)
+pkling_off = open(mod_name, "rb")
+clsf = pickle.load(pkling_off)
 
 file_strm = open(txt_file, 'r') # filestream to read the textdocument provided
 

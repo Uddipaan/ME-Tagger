@@ -1,1 +1,1 @@
-[('My', u'NNP'), ('name', u'NN'), ('is', u'VBZ'), ('uddipaan', u'NN'), ('.', u'.')]
+[('My', u'NNP'), ('name', u'NN'), ('is', u'VBZ'), ('uddipaan', u'RB'), ('.', u'.')]
